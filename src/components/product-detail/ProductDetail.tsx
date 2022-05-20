@@ -3,16 +3,20 @@ import { useEffect, useState } from "react";
 import { IPRODUCT } from "../../models/products";
 import ImageGallery from "react-image-gallery";
 import { useCardContext } from "../../context-api/basket-context/BasketContext";
+import { useParams } from "react-router-dom";
 
 function ProductDetail() {
   const [product, setProduct] = useState<IPRODUCT>();
   const [state, , addToCard] = useCardContext();
+  const {product_id} = useParams();
+ 
+  
   const findProduct = state.find((item) => item.id === product?.id);
 
   useEffect(() => {
     let isApiSubscribed = true;
     (async () => {
-      await axios.get("http://localhost:8000/products/1").then((res) => {
+      await axios.get(`http://localhost:8000/products/${product_id}`).then((res) => {
         if (isApiSubscribed) {
           setProduct(res.data);
         }

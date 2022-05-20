@@ -1,5 +1,6 @@
 import { BrowserRouter } from "react-router-dom";
 import "./App.scss";
+import Footer from "./components/footer/Footer";
 import MyNavbar from "./components/navbar/MyNavbar";
 import Products from "./components/products/Products";
 import BasketContextProvider from "./context-api/basket-context/BasketContext";
@@ -10,6 +11,10 @@ function App() {
     <BasketContextProvider>
       <MyNavbar />
       <MyRouter />
+      <footer>
+      <Footer/>
+      </footer>
+      
     </BasketContextProvider>
   );
 }
